@@ -1,4 +1,9 @@
-<% posts.each.do %>
-    <%= post.title %><br>
-    <%= post.body %><br>
+<div>
+<% unless @posts == nil %>
+    <% @posts.each do |post| %>
+        <%= post.user.username%>
+        <strong><%= post.title %><br></strong>
+        <%= post.body %><br>
+    <% end %>
 <% end %>
+</div>
