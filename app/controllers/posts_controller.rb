@@ -1,37 +1,31 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show, :new, :create]
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
     def new
-        @post = Post.new
+      @post = current_user.posts.build
     end
 
     def index
-        #@posts = Posts.all.order("created_at DESC")
-        @post = Post.new
+      @posts = Post.all
     end
 
     def create
-        @post.user_id = current_user.id
-        @post = current_user.posts.build(post_params)
+      @post = current_user.posts.build(post_params)
 
-        respond_to do |format|
-          if @tweeet.save
-            format.html { redirect_to root_path, notice: 'Post was successfully created.' }
-            format.json { render :show, status: :created, location: @post }
-          else
-            format.html { render :new }
-            format.json { render json: @post.errors, status: :unprocessable_entity }
-          end
+        if @post.save
+          redirect_to root_path
+        else
+          render :new
         end
     end
 
     def index
-    
+
     end
 
     private 
 
-    def tweeet_params
-        params.require(:post).permit(:title, :body, :user_id)
+    def post_params
+      params.require(:post).permit(:title, :body)
     end
 end

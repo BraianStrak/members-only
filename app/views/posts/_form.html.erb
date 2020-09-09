@@ -1,9 +1,0 @@
-<%= form_for @post do |f| %>
-    <%= @post.errors_full_messages.each do |error| %>
-        <li><%= error %></li><br>
-    <% end %>
-
-    Post Title: <%= f.text_field :title, placeholder: "Post Title"%>
-    Post Body: <%= f.text_field :body, placeholder: "Post Body"%>
-    <%= f.submit "Create Post" %>
-<% end %>

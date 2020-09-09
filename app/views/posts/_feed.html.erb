@@ -1,5 +1,5 @@
 <div>
-    <%= render 'posts/form'%>
+    <%= link_to 'New Post', new_post_path(@post), class: "btn btn-primary" %>
     <% unless @posts == nil %>
         <% @posts.each do |post| %>
             <%= post.user.username %>
