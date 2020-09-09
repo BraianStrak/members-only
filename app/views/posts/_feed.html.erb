@@ -1,9 +1,10 @@
 <div>
-<% unless @posts == nil %>
-    <% @posts.each do |post| %>
-        <%= post.user.username%>
-        <strong><%= post.title %><br></strong>
-        <%= post.body %><br>
+    <%= render 'posts/form'%>
+    <% unless @posts == nil %>
+        <% @posts.each do |post| %>
+            <%= post.user.username %>
+            <strong><%= post.title %><br></strong>
+            <small><%= post.body %><br></small>
+        <% end %>
     <% end %>
-<% end %>
 </div>
