@@ -1,9 +1,14 @@
 <div>
     <%= link_to 'New Post', new_post_path, class: "btn btn-primary" %><br>
     <% @posts.each do | post | %>
-        <%= post.user.username %><br>
+        <%if user_signed_in?%>
+            <%= post.user.username %><br>
+        <%end%>
         <strong><%= post.title %><br></strong>
         <small><%= post.body %><br></small>
         <br>
     <% end %>
+    <%if user_signed_in?%>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+    <%end%>
 </div>
