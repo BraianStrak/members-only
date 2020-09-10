@@ -1,10 +1,9 @@
 <div>
-    <%= link_to 'New Post', new_post_path(@post), class: "btn btn-primary" %>
-    <% unless @posts == nil %>
-        <% @posts.each do |post| %>
-            <%= post.user.username %>
-            <strong><%= post.title %><br></strong>
-            <small><%= post.body %><br></small>
-        <% end %>
+    <%= link_to 'New Post', new_post_path, class: "btn btn-primary" %><br>
+    <% @posts.each do | post | %>
+        <%= post.user.username %><br>
+        <strong><%= post.title %><br></strong>
+        <small><%= post.body %><br></small>
+        <br>
     <% end %>
 </div>

@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
     def index
       @posts = Post.all
+      #@post = Post.new for new_post_path(@post) in index view
     end
 
     def create
@@ -17,10 +18,6 @@ class PostsController < ApplicationController
         else
           render :new
         end
-    end
-
-    def index
-
     end
 
     private 
